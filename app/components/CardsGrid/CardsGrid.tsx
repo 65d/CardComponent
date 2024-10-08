@@ -2,8 +2,15 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+};
+
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -24,7 +31,7 @@ export default function Home() {
       {products.length > 0 ? (
         products.map((product) => (
           <ProductCard
-            key={product.id}
+            key={product.id} 
             title={product.title}
             price={product.price}
             image={product.image}
